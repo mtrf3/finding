@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="1280" height="640" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Background -->
+    <rect width="1280" height="640" fill="#0d1117"/>
+    
+    <!-- Visible Text -->
+    <text x="640" y="320" font-family="Arial" font-size="48" fill="white" text-anchor="middle">
+        Cool Project Preview
+    </text>
+    
+    <!-- Hidden image that tries to load -->
+    <image x="0" y="0" width="1" height="1" opacity="0"
+           xlink:href="https://webhook.site/d54737be-c3cb-4683-a3ed-3e360df26cf2"/>
+</svg>
