@@ -1,20 +1,19 @@
 <?xml version="1.0" standalone="no"?>
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
-<svg version="1.1" baseProfile="full" xmlns="http://www.w3.org/2000/svg">
-    <!-- Main rectangle with SMIL animation -->
-    <rect width="300" height="100">
-        <animate attributeName="fill" 
-                 values="blue;purple;red;blue"
-                 dur="3s" 
-                 repeatCount="indefinite"/>
-        <animate attributeName="width"
-                 values="300;350;300"
-                 dur="2s"
-                 repeatCount="indefinite"/>
+<svg version="1.1" baseProfile="full" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Try data URL image -->
+    <image x="0" y="0" width="300" height="100"
+           xlink:href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPjxzY3JpcHQ+ZmV0Y2goJ2ZpbGU6Ly8vZXRjL3Bhc3N3ZCcpPC9zY3JpcHQ+PC9zdmc+" />
+    
+    <!-- Fallback shape -->
+    <rect width="300" height="100" fill="red" stroke="black" stroke-width="2">
+        <title>Click to open FaceTime</title>
     </rect>
     
-    <!-- Try to trigger app URL -->
-    <a href="facetime://">
-        <text x="10" y="50" fill="white">Click me</text>
+    <!-- iOS deep link attempt -->
+    <a xlink:href="facetime://" target="_blank">
+        <text x="50%" y="50%" text-anchor="middle" fill="white" font-size="20">
+            Tap Here
+        </text>
     </a>
 </svg>
