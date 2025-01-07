@@ -1,0 +1,14 @@
+<?xml version="1.0" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg width="300" height="100" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Define a symbol that tries to load external content -->
+    <symbol id="external">
+        <use xlink:href="https://mtrf3.github.io/finding/log.php?ref=1" />
+    </symbol>
+    
+    <!-- Main visible shape -->
+    <rect width="300" height="100" fill="blue" />
+    
+    <!-- Try to use external content -->
+    <use xlink:href="#external" />
+</svg>
