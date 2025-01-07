@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Profile Picture</title>
+    <meta property="og:title" content="Profile Picture" />
+    <meta property="og:description" content="View my new profile picture" />
+    <meta property="og:image" content="https://mtrf3.github.io/finding/pixel.gif" />
+    
+    <!-- Load images for different iOS versions to fingerprint -->
+    <link rel="preload" as="image" href="https://mtrf3.github.io/finding/log.php?ua=ios16" media="(-webkit-device-pixel-ratio: 3)" />
+    <link rel="preload" as="image" href="https://mtrf3.github.io/finding/log.php?ua=ios15" media="(-webkit-device-pixel-ratio: 2)" />
+    
+    <!-- Try to detect system dark/light mode -->
+    <link rel="preload" as="image" href="https://mtrf3.github.io/finding/log.php?theme=dark" media="(prefers-color-scheme: dark)" />
+    <link rel="preload" as="image" href="https://mtrf3.github.io/finding/log.php?theme=light" media="(prefers-color-scheme: light)" />
+    
+    <!-- Try to detect screen size -->
+    <style>
+        @media (device-width: 390px) { 
+            body { background: url('https://mtrf3.github.io/finding/log.php?model=iphone14'); }
+        }
+        @media (device-width: 428px) { 
+            body { background: url('https://mtrf3.github.io/finding/log.php?model=iphone14plus'); }
+        }
+    </style>
+</head>
+<body>
+    <!-- Use srcset to detect supported image formats -->
+    <picture>
+        <source srcset="https://mtrf3.github.io/finding/log.php?format=heic" type="image/heic" />
+        <source srcset="https://mtrf3.github.io/finding/log.php?format=webp" type="image/webp" />
+        <img src="https://mtrf3.github.io/finding/log.php?format=jpg" />
+    </picture>
+</body>
+</html>
