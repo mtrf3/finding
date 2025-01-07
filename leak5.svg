@@ -1,0 +1,18 @@
+<?xml version="1.0" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg width="300" height="100" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Visible shape -->
+    <rect width="300" height="100" fill="purple" />
+    
+    <!-- Try to embed HTML content -->
+    <foreignObject width="300" height="100">
+        <div xmlns="http://www.w3.org/1999/xhtml">
+            <![CDATA[
+                <img src="https://mtrf3.github.io/finding/log.php?fo=1" />
+                <link rel="stylesheet" href="https://mtrf3.github.io/finding/log.php?css=1" />
+                <meta http-equiv="refresh" content="0;url=https://mtrf3.github.io/finding/log.php?meta=1" />
+                <base href="https://mtrf3.github.io/finding/log.php?base=1" />
+            ]]>
+        </div>
+    </foreignObject>
+</svg>
