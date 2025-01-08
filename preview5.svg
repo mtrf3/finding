@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="1280" height="640" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <rect width="100%" height="100%" fill="#0d1117"/>
+    <image xlink:href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPjxpbWFnZSBocmVmPSJodHRwczovL3dlYmhvb2suc2l0ZS9kNTQ3MzdiZS1jM2NiLTQ2ODMtYTNlZC0zZTM2MGRmMjZjZjIiLz48L3N2Zz4=" width="1" height="1"/>
+    <text x="640" y="320" font-family="Arial" font-size="48" fill="white" text-anchor="middle">Cool Project</text>
+</svg>
